@@ -6,6 +6,19 @@
     <title>Fan Chat da FURIA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css" />
+    
+    
+    <script>
+    (function() {
+      var script = document.createElement('script');
+      script.dataset.bot = "6813b0cd42eb60529c5fa3ce";
+      script.dataset.zindex = "99999";
+      script.src = "https://panel.chatfuel.com/widgets/chat-widget/chat-widget.js";
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  </script>
   </head>
   <body>
    
@@ -37,7 +50,6 @@
           <div class="chat-section">
             <div class="group">
               <button class="button" data-model-id="30:235">
-               
                 <div class="state-layer"><div class="label-text">Acesse o Chat</div></div>
               </button>
             </div>
@@ -46,16 +58,15 @@
       </div>
     </div> 
     <script>
-      (function() {
-        var script = document.createElement('script');
-        script.dataset.bot = "6813b0cd42eb60529c5fa3ce";
-        script.dataset.zindex = "99999";
-        script.src = "https://panel.chatfuel.com/widgets/chat-widget/chat-widget.js";
-        script.async = true;
-        script.defer = true;
-        document.getElementsByTagName('head')[0].appendChild(script);
-      })()
-      </script>
+      document.querySelector('.button').addEventListener('click', function() {
+        if (window.ChatfuelWidget) {
+          ChatfuelWidget.open(); // Método preferido (se existir)
+        } else {
+          // Fallback: Recarrega a página ou exibe mensagem
+          alert("Clique no ícone do chat no canto inferior direito da tela.");
+        }
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   </body>
 </html>
