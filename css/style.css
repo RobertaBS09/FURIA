@@ -1,78 +1,120 @@
-/* Estilos base mantidos */
+/* Estilos base */
 html, body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
+
 :root {
-  --m-black: #000000;
-  --m3-label-large-font-family: 'Roboto', sans-serif;
-  --m3-label-large-font-weight: 500;
-  --m3-label-large-font-size: 1rem;
-  --m3-label-large-letter-spacing: 0.1px;
-  --m3-label-large-line-height: 1.5;
-  --m3-label-large-font-style: normal;
+  --furia-orange:#C5A135;
+  --furia-dark: #0A0A0A;
+  --furia-light: #1E1E1E;
+  --furia-accent: #FFDF00;
 }
 
 .box {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh; /* Alterado para min-height */
   display: flex;
   flex-direction: column;
+  background: 
+    linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(30,30,30,0.95) 100%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="%23FF5C00" stroke-width="0.3" stroke-dasharray="2 2"/><polygon points="50,0 93,25 93,75 50,100 7,75 7,25" fill="none" stroke="%23FF5C00" stroke-width="0.2"/></svg>'),
+    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
 }
 
 .box .main-page {
   flex: 1;
-  border-radius: 5px;
-  overflow: hidden;
-  border: 1px dashed #9747ff;
-  background-color: #d0cfcf;
+  width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
 }
+.box .main-content {
+  flex: 1;
+  padding-bottom: 60px; /* Espaço extra no final */
+}
 
-/* Cabeçalho */
+@media (max-width: 768px) {
+  .box {
+    background-attachment: scroll; /* Melhora performance */
+  }
+}
+/* EFEITO DE PARTÍCULAS ANIMADAS (ENERGIA) */
+.box .main-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, var(--furia-orange), transparent 70%),
+    radial-gradient(circle at 80% 70%, var(--furia-accent), transparent 70%);
+  opacity: 0.1;
+  z-index: 0;
+  animation: pulse 8s ease infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.05; transform: scale(1); }
+  50% { opacity: 0.15; }
+  100% { opacity: 0.05; transform: scale(1.05); }
+}
+
+/* EFEITO DE SCANLINES (RETRO GAMER) */
+.box .main-page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,92,0,0.03),
+      rgba(255,92,0,0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* CABEÇALHO MODERNIZADO */
 .box .property-default {
-  background-color: #b3acac;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  background: linear-gradient(90deg, var(--furia-orange) 0%, var(--furia-dark) 120%);
+  padding: 15px 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10;
 }
 
 .logo-section {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.box .button {
-  all: unset;
-  background-color: #2c2c2c;
-  color: #f5f5f5;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: 1px solid #2c2c2c;
-  cursor: pointer;
-  text-align: center;
+  gap: 15px;
 }
 
 .box .fan-chat {
   font-weight: 800;
   font-size: 2rem;
-  color: #5d5959;
+  color: white;
+  text-shadow: 0 0 10px #FFDF00;
 }
 
 .box .af-fe-aa,
 .box .unnamed-removebg {
   height: 50px;
   object-fit: cover;
+  filter: drop-shadow(0 0 5px #FFDF00);
 }
 
-/* Layout principal - MODIFICAÇÕES PRINCIPAIS */
+/* LAYOUT PRINCIPAL */
 .box .main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -80,19 +122,11 @@ html, body {
   padding: 50px 40px 40px 40px;
   gap: 40px;
   align-items: flex-start;
+  position: relative;
+  z-index: 2;
 }
 
-/* Seção de texto (esquerda) - MODIFICADO */
-.box .text-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: auto;
-  padding-top: 100px;
-  padding-right: 20px;
-}
-
-/* Seção do chat (direita) - MODIFICADO */
+/* SEÇÃO DE CHAT */
 .box .chat-section {
   display: flex;
   justify-content: flex-start;
@@ -102,42 +136,7 @@ html, body {
   position: relative;
 }
 
-.box .group {
-  width: 100%;
-  max-width: 700px;
-  height: 100%;
-  background-color: #d9d9d9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding-bottom: 40px;
-}
-
-/* Ajustes de texto */
-.box .acesse-ao-fan-chat {
-  font-size: 24px;
-  font-weight: 800;
-  color: #5d5959;
-  margin: 0 0 10px 0;
-}
-
-.box .div {
-  font-size: 18px;
-  margin: 0 0 15px 0;
-  color: #000;
-}
-
-.box .converse-com-outros {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #000;
-  margin: 0;
-}
-
-/* Estilos para o widget do Chatfuel */
+/* ESTILOS PARA O WIDGET DO CHATFUEL */
 .chatfuel-widget-container {
   display: none !important;
 }
@@ -148,7 +147,10 @@ html, body {
   border-radius: 12px;
   overflow: hidden;
   margin-top: 20px;
-  background: #f5f5f5;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--furia-orange);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 #chatfuel-iframe-container iframe {
@@ -161,8 +163,8 @@ html, body {
   display: none !important;
 }
 
-/* Estilos do botão */
-button {
+/* BOTÕES */
+.button {
   all: unset;
   box-sizing: border-box;
   display: flex;
@@ -172,55 +174,69 @@ button {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: var(--m-black);
+  background: linear-gradient(135deg, var(--furia-orange), var(--furia-accent)) !important;
   border-radius: 100px;
   overflow: hidden;
   margin-top: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px #FFD700;
 }
 
-button .state-layer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 24px;
-  position: relative;
-  flex: 1;
-  align-self: stretch;
-  width: 100%;
-  flex-grow: 1;
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px #D4AF37;
 }
 
-button .label-text {
-  position: relative;
-  width: fit-content;
-  font-family: var(--m3-label-large-font-family);
-  font-weight: var(--m3-label-large-font-weight);
-  color: #ffffff;
-  font-size: var(--m3-label-large-font-size);
-  text-align: center;
-  letter-spacing: var(--m3-label-large-letter-spacing);
-  line-height: var(--m3-label-large-line-height);
-  white-space: nowrap;
-  font-style: var(--m3-label-large-font-style);
+.button .label-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* Responsividade */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
   .box .main-content {
     grid-template-columns: 1fr;
-    padding: 10px 20px;
+    padding: 30px 20px;
   }
   
   .box .chat-section {
     justify-content: center;
   }
   
-  .box .group {
-    height: 400px;
+  .property-default {
+    padding: 15px;
   }
   
-  #chatfuel-iframe-container {
-    height: 400px;
+  .logo-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .fan-chat {
+    font-size: 1.8rem !important;
+  }
+  
+  .box .main-page {
+    background: 
+      linear-gradient(135deg, rgba(10,10,10,0.98) 0%, rgba(30,30,30,0.98) 100%),
+      url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .box .main-content {
+    padding: 20px 15px;
+  }
+  
+  .box .text-section, .highlights-section {
+    padding: 20px !important;
+  }
+  
+  .fan-chat {
+    font-size: 1.5rem !important;
   }
 }
