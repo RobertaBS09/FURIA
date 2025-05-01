@@ -1,0 +1,197 @@
+/* Estilos base mantidos */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+:root {
+  --m-black: #000000;
+  --m3-label-large-font-family: 'Roboto', sans-serif;
+  --m3-label-large-font-weight: 500;
+  --m3-label-large-font-size: 1rem;
+  --m3-label-large-letter-spacing: 0.1px;
+  --m3-label-large-line-height: 1.5;
+  --m3-label-large-font-style: normal;
+}
+
+.box {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.box .main-page {
+  flex: 1;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px dashed #9747ff;
+  background-color: #d0cfcf;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
+.box .property-default {
+  background-color: #b3acac;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.box .button {
+  all: unset;
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid #2c2c2c;
+  cursor: pointer;
+  text-align: center;
+}
+
+.box .fan-chat {
+  font-weight: 800;
+  font-size: 2rem;
+  color: #5d5959;
+}
+
+.box .af-fe-aa,
+.box .unnamed-removebg {
+  height: 50px;
+  object-fit: cover;
+}
+
+/* Layout principal - MODIFICAÇÕES PRINCIPAIS */
+.box .main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100% - 90px);
+  padding: 50px 40px 40px 40px; /* Padding superior reduzido para 10px */
+  gap: 40px;
+  align-items: flex-start; /* Alterado de center para flex-start */
+}
+
+/* Seção de texto (esquerda) - MODIFICADO */
+.box .text-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alterado de center para flex-start */
+  height: auto; /* Alterado de 100% para auto */
+  padding-top: 100px; /* Adicionado */
+  padding-right: 20px;
+}
+
+/* Seção do chat (direita) - MODIFICADO */
+.box .chat-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end; /* Alterado de flex-start para flex-end */
+  height: 100%; /* Alterado de auto para 100% */
+  padding-bottom: 40px; /* Adicionado padding na base */
+  position: relative; /* Adicionado para posicionamento relativo */
+}
+
+
+.box .group {
+  width: 100%;
+  max-width: 700px;
+  height: 100%; /* Alterado de 600px para 100% */
+  background-color: #d9d9d9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinha o conteúdo no final */
+  align-items: center; /* Centraliza horizontalmente */
+  padding-bottom: 40px; /* Espaço abaixo do botão */
+}
+
+/* Ajustes de texto para melhor espaçamento - MODIFICADO */
+.box .acesse-ao-fan-chat {
+  font-size: 24px;
+  font-weight: 800;
+  color: #5d5959;
+  margin: 0 0 10px 0; /* Reduzido espaçamento */
+}
+
+.box .div {
+  font-size: 18px;
+  margin: 0 0 15px 0; /* Reduzido espaçamento */
+  color: #000;
+}
+
+.box .converse-com-outros {
+  font-size: 16px;
+  line-height: 1.5; /* Ajuste de entrelinha */
+  color: #000;
+  margin: 0; /* Removido espaçamento extra */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .box .main-content {
+    grid-template-columns: 1fr;
+    padding: 10px 20px; /* Padding superior reduzido */
+  }
+  
+  .box .chat-section {
+    justify-content: center;
+  }
+  
+  .box .group {
+    height: 400px;
+  }
+}
+button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--m-black);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-top: auto; /* Empurra o botão para baixo */
+}
+
+button .state-layer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Corrigido de 80% para 8px */
+  padding: 10px 24px; /* Corrigido de "100x 240%" para valores válidos */
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  width: 100%;
+  flex-grow: 1;
+}
+
+button .label-text {
+  position: relative;
+  width: fit-content;
+  font-family: var(--m3-label-large-font-family);
+  font-weight: var(--m3-label-large-font-weight);
+  color: #ffffff;
+  font-size: var(--m3-label-large-font-size);
+  text-align: center;
+  letter-spacing: var(--m3-label-large-letter-spacing);
+  line-height: var(--m3-label-large-line-height);
+  white-space: nowrap; /* Corrigido de "nonzero" para "nowrap" */
+  font-style: var(--m3-label-large-font-style); /* Removido ponto e vírgula errado */
+}
