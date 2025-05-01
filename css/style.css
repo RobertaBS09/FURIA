@@ -77,18 +77,18 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: calc(100% - 90px);
-  padding: 50px 40px 40px 40px; /* Padding superior reduzido para 10px */
+  padding: 50px 40px 40px 40px;
   gap: 40px;
-  align-items: flex-start; /* Alterado de center para flex-start */
+  align-items: flex-start;
 }
 
 /* Seção de texto (esquerda) - MODIFICADO */
 .box .text-section {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Alterado de center para flex-start */
-  height: auto; /* Alterado de 100% para auto */
-  padding-top: 100px; /* Adicionado */
+  justify-content: flex-start;
+  height: auto;
+  padding-top: 100px;
   padding-right: 20px;
 }
 
@@ -96,63 +96,72 @@ html, body {
 .box .chat-section {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end; /* Alterado de flex-start para flex-end */
-  height: 100%; /* Alterado de auto para 100% */
-  padding-bottom: 40px; /* Adicionado padding na base */
-  position: relative; /* Adicionado para posicionamento relativo */
+  align-items: flex-end;
+  height: 100%;
+  padding-bottom: 40px;
+  position: relative;
 }
-
 
 .box .group {
   width: 100%;
   max-width: 700px;
-  height: 100%; /* Alterado de 600px para 100% */
+  height: 100%;
   background-color: #d9d9d9;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Alinha o conteúdo no final */
-  align-items: center; /* Centraliza horizontalmente */
-  padding-bottom: 40px; /* Espaço abaixo do botão */
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 40px;
 }
 
-/* Ajustes de texto para melhor espaçamento - MODIFICADO */
+/* Ajustes de texto */
 .box .acesse-ao-fan-chat {
   font-size: 24px;
   font-weight: 800;
   color: #5d5959;
-  margin: 0 0 10px 0; /* Reduzido espaçamento */
+  margin: 0 0 10px 0;
 }
 
 .box .div {
   font-size: 18px;
-  margin: 0 0 15px 0; /* Reduzido espaçamento */
+  margin: 0 0 15px 0;
   color: #000;
 }
 
 .box .converse-com-outros {
   font-size: 16px;
-  line-height: 1.5; /* Ajuste de entrelinha */
+  line-height: 1.5;
   color: #000;
-  margin: 0; /* Removido espaçamento extra */
+  margin: 0;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .box .main-content {
-    grid-template-columns: 1fr;
-    padding: 10px 20px; /* Padding superior reduzido */
-  }
-  
-  .box .chat-section {
-    justify-content: center;
-  }
-  
-  .box .group {
-    height: 400px;
-  }
+/* Estilos para o widget do Chatfuel */
+.chatfuel-widget-container {
+  display: none !important;
 }
+
+#chatfuel-iframe-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 20px;
+  background: #f5f5f5;
+}
+
+#chatfuel-iframe-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+}
+
+.chat-hidden {
+  display: none !important;
+}
+
+/* Estilos do botão */
 button {
   all: unset;
   box-sizing: border-box;
@@ -166,15 +175,15 @@ button {
   background-color: var(--m-black);
   border-radius: 100px;
   overflow: hidden;
-  margin-top: auto; /* Empurra o botão para baixo */
+  margin-top: auto;
 }
 
 button .state-layer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Corrigido de 80% para 8px */
-  padding: 10px 24px; /* Corrigido de "100x 240%" para valores válidos */
+  gap: 8px;
+  padding: 10px 24px;
   position: relative;
   flex: 1;
   align-self: stretch;
@@ -192,6 +201,26 @@ button .label-text {
   text-align: center;
   letter-spacing: var(--m3-label-large-letter-spacing);
   line-height: var(--m3-label-large-line-height);
-  white-space: nowrap; /* Corrigido de "nonzero" para "nowrap" */
-  font-style: var(--m3-label-large-font-style); /* Removido ponto e vírgula errado */
+  white-space: nowrap;
+  font-style: var(--m3-label-large-font-style);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .box .main-content {
+    grid-template-columns: 1fr;
+    padding: 10px 20px;
+  }
+  
+  .box .chat-section {
+    justify-content: center;
+  }
+  
+  .box .group {
+    height: 400px;
+  }
+  
+  #chatfuel-iframe-container {
+    height: 400px;
+  }
 }

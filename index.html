@@ -7,21 +7,42 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css" />
     
-    
     <script>
-    (function() {
-      var script = document.createElement('script');
-      script.dataset.bot = "6813b0cd42eb60529c5fa3ce";
-      script.dataset.zindex = "99999";
-      script.src = "https://panel.chatfuel.com/widgets/chat-widget/chat-widget.js";
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  </script>
+      (function() {
+        var script = document.createElement('script');
+        script.dataset.bot = "6813b0cd42eb60529c5fa3ce";
+        script.dataset.zindex = "99999";
+        script.src = "https://panel.chatfuel.com/widgets/chat-widget/chat-widget.js";
+        script.async = true;
+        script.defer = true;
+        
+        script.onload = function() {
+          // Remove o widget flutuante padrão
+          const defaultWidget = document.querySelector('.chatfuel-widget-container');
+          if (defaultWidget) defaultWidget.remove();
+          
+          // Cria container para o iframe
+          const container = document.createElement('div');
+          container.id = 'chatfuel-iframe-container';
+          container.classList.add('chat-hidden');
+          
+          // Adiciona à seção de chat
+          const chatSection = document.querySelector('.chat-section .group');
+          if (chatSection) {
+            chatSection.appendChild(container);
+            
+            // Cria o iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://panel.chatfuel.com/widgets/chat-widget/?bot_id=6813b0cd42eb60529c5fa3ce`;
+            container.appendChild(iframe);
+          }
+        };
+        
+        document.head.appendChild(script);
+      })();
+    </script>
   </head>
   <body>
-   
     <div class="box">
       <div class="main-page">
         <!-- Cabeçalho -->
@@ -31,7 +52,6 @@
             <img class="af-fe-aa" src="img/Furia.png" />
             <div class="fan-chat">Fan Chat</div>
           </div>
-          
         </div>
 
         <!-- Conteúdo principal -->
@@ -40,16 +60,16 @@
           <div class="text-section">
             <p class="acesse-ao-fan-chat">Acesse ao Fan chat da Furia</p>
             <p class="div">No Fan Chat da FURIA, você fica por dentro de tudo em tempo real!</p>
-          <p class="converse-com-outros">
-  Converse ao vivo com outros torcedores apaixonados, compartilhe memes, gritos de guerra e vibrações intensas! Acompanhe os jogos em tempo real com transmissão exclusiva, estatísticas detalhadas e comentários dos melhores narradores. Receba notícias quentes diretamente do elenco, bastidores exclusivos e promoções especiais só para membros do Fan Chat. Participe da torcida organizada virtual, crie amizades com fãs de todo o Brasil e viva a emoção do esporte como nunca antes!<br /><br />
-  Mostre toda sua paixão pela FURIA com emojis exclusivos, stickers dos jogadores e hashtags virais. Viva cada jogada épica, cada vitória espetacular e cada momento histórico junto com a comunidade mais vibrante e engajada do cenário esportivo! Aqui, o seu amor pela FURIA ganha voz, reconhecimento e uma família de torcedores tão fanáticos quanto você!
-</p>
+            <p class="converse-com-outros">
+              Converse ao vivo com outros torcedores apaixonados, compartilhe memes, gritos de guerra e vibrações intensas! Acompanhe os jogos em tempo real com transmissão exclusiva, estatísticas detalhadas e comentários dos melhores narradores. Receba notícias quentes diretamente do elenco, bastidores exclusivos e promoções especiais só para membros do Fan Chat. Participe da torcida organizada virtual, crie amizades com fãs de todo o Brasil e viva a emoção do esporte como nunca antes!<br /><br />
+              Mostre toda sua paixão pela FURIA com emojis exclusivos, stickers dos jogadores e hashtags virais. Viva cada jogada épica, cada vitória espetacular e cada momento histórico junto com a comunidade mais vibrante e engajada do cenário esportivo! Aqui, o seu amor pela FURIA ganha voz, reconhecimento e uma família de torcedores tão fanáticos quanto você!
+            </p>
           </div>
           
           <!-- Área do chat (direita) -->
           <div class="chat-section">
             <div class="group">
-              <button class="button" data-model-id="30:235">
+              <button class="button" id="chatToggleButton">
                 <div class="state-layer"><div class="label-text">Acesse o Chat</div></div>
               </button>
             </div>
@@ -57,16 +77,23 @@
         </div>
       </div>
     </div> 
+    
     <script>
-      document.querySelector('.button').addEventListener('click', function() {
-        if (window.ChatfuelWidget) {
-          ChatfuelWidget.open(); // Método preferido (se existir)
-        } else {
-          // Fallback: Recarrega a página ou exibe mensagem
-          alert("Clique no ícone do chat no canto inferior direito da tela.");
+      // Controle do botão de toggle
+      document.getElementById('chatToggleButton').addEventListener('click', function() {
+        const chatContainer = document.getElementById('chatfuel-iframe-container');
+        if (chatContainer) {
+          chatContainer.classList.toggle('chat-hidden');
+          
+          // Altera o texto do botão
+          const buttonText = chatContainer.classList.contains('chat-hidden') 
+            ? 'Acesse o Chat' 
+            : 'Fechar Chat';
+          document.querySelector('.label-text').textContent = buttonText;
         }
       });
     </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   </body>
 </html>
